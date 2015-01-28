@@ -1,0 +1,31 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+sourceCompatibility = 1.6
+version = '1.0'
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'study-words', 'Implementation-Version': version        
+    }
+}
+repositories {
+    mavenCentral()
+    flatDir {
+       dirs '../public_repo'
+    }
+}
+
+dependencies {
+    compile (    	
+    	"commons-io:commons-io:2.4",
+    	"org.slf4j:slf4j-api:1.7.7"
+    )
+    runtime (
+    	"org.slf4j:slf4j-log4j12:1.7.7"    	
+    )
+    testCompile (
+    	"junit:junit:4.11"
+    )
+}
+
+[compileJava, compileTestJava]*.options*.encoding ='UTF-8'
